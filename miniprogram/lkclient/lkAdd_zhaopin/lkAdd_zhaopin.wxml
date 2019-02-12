@@ -1,0 +1,36 @@
+<!--miniprogram/lkclient/lkAdd_zhaopin/lkAdd_zhaopin.wxml-->
+<!-- <text>miniprogram/lkclient/lkAdd_zhaopin/lkAdd_zhaopin.wxml</text> -->
+<view class="weui-cells__title">*职位名称</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入职位名称" bindinput ="zkOnShopName"/>
+                </view>
+            </view>
+        </view>
+
+        <view class="weui-cells__title">*职位内容</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <textarea class="weui-textarea" placeholder="请输入发布内容" style="height: 5.3em" bindinput ="zkOnShopInfo"/>
+                    <view class="weui-textarea-counter">0/200</view>
+                </view>
+            </view>
+        </view> 
+
+        <checkbox-group bindchange="zkbindAgreeChange">
+            <label class="weui-agree" for="weuiAgree">
+                <view class="weui-agree__text">
+                    <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{zkisAgree}}" />
+                    <view class="weui-agree__checkbox-icon">
+                        <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" wx:if="{{zkisAgree}}"></icon>
+                    </view>
+                    阅读并同意<navigator url="" class="weui-agree__link">《相关条款》</navigator>
+                </view>
+            </label>
+        </checkbox-group>
+
+        <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" bindtap="showTopTips">确定</button>
+</view>

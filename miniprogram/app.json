@@ -1,0 +1,54 @@
+{
+  "pages": [
+    "lkclient/lkIndex/lkIndex",
+    "lkclient/lkAdd/lkAdd",
+    "lkclient/lkAdmin/lkAdmin",
+    "pages/index/index",
+    "pages/userConsole/userConsole",
+    "pages/storageConsole/storageConsole",
+    "pages/databaseGuide/databaseGuide",
+    "pages/addFunction/addFunction",
+    "pages/deployFunctions/deployFunctions",
+    "pages/chooseLib/chooseLib",
+    "lkclient/lkAdd_zhuanrang/lkAdd_zhuanrang",
+    "lkclient/lkAdd_zhaopin/lkAdd_zhaopin"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "window": {
+    "backgroundColor": "#353535",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#353535",
+    "navigationBarTitleText": "LK信息发布平台",
+    "navigationBarTextStyle": "white",
+    "onReachBottomDistance":50
+  },
+  "tabBar": {
+    "color": "#353535",
+    "selectedColor": "#E64340",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "images/tabBar/home_r.png",
+        "iconPath": "images/tabBar/home_b.png",
+        "pagePath": "lkclient/lkIndex/lkIndex",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "images/tabBar/add.png",
+        "iconPath": "images/tabBar/add.png",
+        "pagePath": "lkclient/lkAdd/lkAdd",
+        "text": "发布"
+      },
+      {
+        "selectedIconPath": "images/tabBar/admin_r.png",
+        "iconPath": "images/tabBar/admin_b.png",
+        "pagePath": "lkclient/lkAdmin/lkAdmin",
+        "text": "我的"
+      }
+    ]
+  }
+}

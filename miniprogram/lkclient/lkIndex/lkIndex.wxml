@@ -1,0 +1,224 @@
+<!--miniprogram/pages/lkAdmin/lkAdmin.wxml-->
+
+<view class="page"> 
+    
+    <view class="weui-search-bar">
+        <view class="zk-city" style='margin-right:{{zkSerchShowLong}}px' >{{city}}</view>
+        <view class="weui-search-bar__form">
+            <view class="weui-search-bar__box">
+                <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" 
+                focus="{{inputShowed}}" bindinput="inputTyping" />
+
+                <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                    <icon type="clear" size="14"></icon>
+                </view>
+            </view>
+            <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                <icon class="weui-icon-search" type="search" size="14"></icon>
+                <view class="weui-search-bar__text">搜索</view>
+            </label>
+        </view> 
+        <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+    </view>
+
+
+    <view class="zk_weui-grids">
+        <block wx:for="{{zkFunc}}" wx:key="*this">
+            <navigator url="" class="zk_weui-grid" hover-class="zk_weui-grid_active">
+                <image class="zk_weui-grid__icon" src="../../images/weui/icon_nav_feedback.png" />
+                <view class="zk_weui-grid__label">{{item.name}}</view>
+            </navigator>
+        </block>
+    </view>
+
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}"
+        interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
+        <block wx:for="{{background}}" wx:key="*this">
+            <swiper-item >
+                <image class="zk-swiper-item" src="../../images/weui/pic_160.png" />
+            </swiper-item>
+        </block>
+    </swiper>
+
+    <view class="weui-grids">
+        <block wx:for="{{zkShopName}}" wx:key="*this">
+            <navigator url="" class="weui-grid" hover-class="weui-grid_active">
+                <image class="weui-grid__icon" src="../../images/weui/icon_nav_widget.png" />
+                <view class="weui-grid__label">{{item.name}}</view>
+            </navigator>
+        </block>
+    </view>
+
+    <view class="weui-tab">
+        <view class="weui-navbar">
+            <block wx:for="{{tabs}}" wx:key="*this">
+                <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                    <view class="weui-navbar__title">{{item}}</view>
+                </view>
+            </block>
+            <view class="weui-navbar__slider" style="left: {{sliderLeft == null?sliderLeft:0}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+        </view>
+        <view class="weui-tab__panel">
+            <view hidden="{{activeIndex != 0}}">
+                <block wx:for="{{zktbCanYin}}" wx:key="*this">
+                    <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                            <image class="weui-media-box__thumb" src="../../images/weui/{{item.zkIcon}}.png" />
+                        </view>
+                        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                            <view class="weui-media-box__title">{{item.zkShopName}}</view>
+                            <view class="weui-media-box__desc">{{item.zkShopInfo}}</view>
+                        </view>
+                    </navigator>
+                </block>
+            </view>
+            <view hidden="{{activeIndex != 1}}">
+                <block wx:for="{{zktbZhaoPin}}" wx:key="*this">
+                    <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                            <image class="weui-media-box__thumb" src="../../images/weui/{{item.zkIcon}}.png" />
+                        </view>
+                        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                            <view class="weui-media-box__title">{{item.zkShopName}}</view>
+                            <view class="weui-media-box__desc">{{item.zkShopInfo}}</view>
+                        </view>
+                    </navigator>
+                </block>
+            </view>
+            <view hidden="{{activeIndex != 2}}">
+                <block wx:for="{{zktbJanKang}}" wx:key="*this">
+                    <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                            <image class="weui-media-box__thumb" src="../../images/weui/{{item.zkIcon}}.png" />
+                        </view>
+                        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                            <view class="weui-media-box__title">{{item.zkShopName}}</view>
+                            <view class="weui-media-box__desc">{{item.zkShopInfo}}</view>
+                        </view>
+                    </navigator>
+                </block>
+            </view>
+        </view>
+    </view>
+
+</view>
+
+
+<!-- 以下是一个完整的实例 -->
+
+<!-- <view class="page">
+    <view class="page__bd"> -->
+        <!-- 实时搜索 -->
+        <!-- <view class="weui-search-bar">{{city}}
+            <view class="weui-search-bar__form">
+                <view class="weui-search-bar__box">
+                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                    <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+                    <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                        <icon type="clear" size="14"></icon>
+                    </view>
+                </view>
+                <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                    <icon class="weui-icon-search" type="search" size="14"></icon>
+                    <view class="weui-search-bar__text">搜索</view>
+                </label>
+            </view>
+            <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+        </view>
+        <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
+            <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">
+                    <view>实时搜索文本</view>
+                </view>
+            </navigator>
+            <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">
+                    <view>实时搜索文本</view>
+                </view>
+            </navigator>
+            <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">
+                    <view>实时搜索文本</view>
+                </view>
+            </navigator>
+            <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">
+                    <view>实时搜索文本</view>
+                </view>
+            </navigator>
+        </view> -->
+        <!-- 滚动试图 -->
+        <!-- <view class="page-section page-section-spacing swiper">
+            <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}"
+                interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
+                <block wx:for="{{background}}" wx:key="*this">
+                <swiper-item>
+                    <view class="swiper-item {{item}}"></view>
+                </swiper-item>
+                </block>
+            </swiper>
+        </view> -->
+        <!-- 商家信息 -->
+        <!-- <view class="weui-grids">
+            <block wx:for="[0]" wx:key="*this">
+                <navigator url="" class="weui-grid" hover-class="weui-grid_active">
+                    <image class="weui-grid__icon" src="../../images/weui/vcode.jpg" />
+                    <view class="weui-grid__label">入驻商家</view>
+                </navigator>
+            </block>
+        </view> -->
+        <!-- 顶部导航 -->
+        <!-- <view class="weui-tab">
+            <view class="weui-navbar">
+                <block wx:for="{{tabs}}" wx:key="*this">
+                    <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                        <view class="weui-navbar__title">{{item}}</view>
+                    </view>
+                </block>
+                <view class="weui-navbar__slider" style="left: {{sliderLeft == null?sliderLeft:0}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+            </view>
+                <view class="weui-tab__panel">
+                    <view hidden="{{activeIndex != 0}}">
+                        <block wx:for="[0,1,2,3]" wx:key="*this">
+                            <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                                <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                                    <image class="weui-media-box__thumb" src="../../images/weui/icon_nav_special.png" />
+                                </view>
+                                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                                    <view class="weui-media-box__title">老马家牛肉面</view>
+                                    <view class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</view>
+                                </view>
+                            </navigator>
+                        </block>
+                    </view>
+                    <view hidden="{{activeIndex != 1}}">
+                        <block wx:for="[0,1,2,3]" wx:key="*this">
+                            <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                                <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                                    <image class="weui-media-box__thumb" src="../../images/weui/icon_nav_special.png" />
+                                </view>
+                                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                                    <view class="weui-media-box__title">那个啥科技发展有限公司</view>
+                                    <view class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</view>
+                                </view>
+                            </navigator>
+                        </block>
+                    </view>
+                    <view hidden="{{activeIndex != 2}}">
+                        <block wx:for="[0,1,2,3]" wx:key="*this">
+                            <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                                <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                                    <image class="weui-media-box__thumb" src="../../images/weui/icon_nav_special.png" />
+                                </view>
+                                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                                    <view class="weui-media-box__title">仙丹</view>
+                                    <view class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</view>
+                                </view>
+                            </navigator>
+                        </block>
+                    </view>
+                </view>
+        </view>
+    </view>
+</view>  -->
